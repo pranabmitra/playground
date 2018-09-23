@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Canvas</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="612" height="320" style="border: 1px solid #000; background-color: white;"></canvas>
+        <script>
+            /* Load image */
+            function loadImage(src) {
+                return new Promise(function (resolve) {
+                    var image = new Image();
+                    image.src = src;
+                    image.onload = function () {
+                        resolve(image);
+                    };
+                });
+            }
+
+            var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d'),
+                lastAria = 612,
+                topButtonWidth = lastAria - 160,
+                curveTop = topButtonWidth + 18,
+                rightSide = 300,
+                headerHeight = 50,
+                bottomButtonWidth = 130,
+                lineMargin = 420,
+                texMargin = lineMargin + 20,
+                widthLine;
+
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0,0,612,320);
+            ctx.save();
+
+            if (true) {
+                ctx.beginPath();
+                ctx.fillStyle = "#ff4b4a";
+                ctx.moveTo(curveTop, 0);
+                ctx.lineTo(topButtonWidth, headerHeight);
+                ctx.lineTo(curveTop, headerHeight);
+                ctx.lineTo(lastAria, headerHeight);
+                ctx.lineTo(lastAria, 0);
+                ctx.fill();
+                ctx.restore();
+
+
+                ctx.save();
+                ctx.fillStyle = '#ffffff';
+                ctx.font="20px arial";
+                ctx.fillText("50% Off", 500, 34);
+            }
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(450, 260, bottomButtonWidth, 40);
+            ctx.fillStyle = "#15d24b";
+            ctx.shadowColor = '#C2C2C2';
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetY = 3;
+            ctx.fill();
+            ctx.restore();
+
+            ctx.save();
+            ctx.fillStyle = "#ffffff";
+            ctx.font="18px arial";
+            ctx.fillText("Buy Now", 480, 287);
+            ctx.restore();
+
+
+            ctx.fillStyle = '#000000';
+            ctx.font="18px arial";
+            ctx.fillText("Eau De Toilette Natural Spray", rightSide, 100);
+            ctx.fillText("Brand: Addidas", rightSide, 130);
+            ctx.fillText("Store: Test Store", rightSide, 160);
+            ctx.fillText("BDT 2100,00", 420, 200);
+            ctx.restore();
+
+            ctx.save();
+            if (true) {
+                ctx.beginPath();
+                ctx.font="16px arial";
+                ctx.fillStyle = '#494948';
+                ctx.fillText("BDT4200",texMargin,230);
+                widthLine = ctx.measureText("BDT4200");
+                ctx.fillRect(lineMargin,224, widthLine.width + 36, 1);
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            loadImage('./sms.png').then(function (image) {
+                ctx.drawImage(image, 300, 260, 66, 46);
+            });
+
+            loadImage('./call.png').then(function (image) {
+                // GAP =  ((450[last button, Buy Now,  pos] - 300[first button pos]) - (2 * 66[each button's width]) / 2)
+                ctx.drawImage(image, 375, 260, 66, 46); 
+            });
+
+            loadImage('./demo.jpg').then(function (image) {
+                ctx.drawImage(image, 30, 50, 240, 240);
+
+                /*export image to dom*/
+                var image = new Image();
+                image.src = canvas.toDataURL();
+                document.body.appendChild(image);
+            });
+
+
+
+        </script>
+    </body>
+</html>
