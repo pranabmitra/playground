@@ -65,12 +65,12 @@ fs.stat('file.txt', function (err, stats) {
 });
 
 /* Rename and move file */
-fs.rename('file.txt', 'test.txt.bak', function (err) {
+fs.rename('test.txt', 'test.txt.bak', function (err) {
   if (err) throw err;
   console.log('Rename complete.');
 });
 
-fs.rename('file2.txt', './moved/asd.txt', function (err) {
+fs.rename('test2.txt', './moved/test2.txt', function (err) {
   if (err) throw err;
   console.log('Move complete.');
 });

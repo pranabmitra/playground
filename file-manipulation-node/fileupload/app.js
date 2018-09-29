@@ -13,7 +13,7 @@ function fileFilter (req, file, callback) {
         return callback(new Error('Only images are allowed'))
     }
 
-    return callback(null, true);  
+    return callback(null, true);
 }
 
 const Storage = multer.diskStorage({
