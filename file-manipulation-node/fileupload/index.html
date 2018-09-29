@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>File upload</title>
+    </head>
+    <body>
+        <form id="myForm" name="myForm" enctype="myltipart-form-data" method="post">
+            <input type="file" id="myFile" name="myFile" multiple />
+            <input id="myButton" type="submit" name="submit">
+        </form>
+
+        <script>
+            var form = document.getElementById('myForm');
+
+            form.addEventListener('submit', function onSubmit(event) {
+                var myFile = document.getElementById('myFile').files,
+                    oData = new FormData(form),
+                    oReq = new XMLHttpRequest();
+
+                oReq.open("POST", "/api/upload", true);
+
+                oReq.onload = function onLoad(oEvent) {
+                    if(oReq.status === 200) {
+                        console.log('OK');
+                    } else {
+                        console.log('ERROR');
+                    }
+                };
+
+                oReq.send(oData);
+                event.preventDefault();
+
+            }, false);
+        </script>
+    </body>
+</html>
