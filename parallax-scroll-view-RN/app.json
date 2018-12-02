@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "tracking-RN",
-    "description": "This is an experimental tracking app.",
-    "slug": "tracking-RN",
+    "name": "parallax-scroll-view-RN",
+    "description": "This is an parallax scroll view with image swiper app.",
+    "slug": "parallax-scroll-view-RN",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],

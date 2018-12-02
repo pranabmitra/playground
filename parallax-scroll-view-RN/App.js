@@ -1,6 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+
+import ImageSwiper from './components/ImageSwiper';
+
+const { width, height } = Dimensions.get('window');
+const HEADER_HEIGHT = 60;
 
 const styles = StyleSheet.create({
   container: {
@@ -8,47 +13,69 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  stickyHeader: {
+    height: HEADER_HEIGHT,
+    alignItems: 'center', 
+    
+    backgroundColor: 'white', justifyContent: 'center'
+  },
+  fixedHeader: {
+    position: 'absolute',
+    top: 0,
+    right: 20,
+    backgroundColor: 'transparent'
+  },
+  foreground: {
+    height: 350, 
+    width: width, 
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center'
+  }
   
 });
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: 'Universe' }
+    this.state = { title: 'Title' }
     
   }
   
 
   render() {
-    // return (
-    //   <View style={styles.container}>
-    //     <Text>Hi ... I am running...</Text>
-    //   </View>
-    // );
     return (
       <ParallaxScrollView
         backgroundColor="transparent"
-        contentBackgroundColor="pink"
+        contentBackgroundColor="#EAF2F8"
         fadeOutForeground={true}
         parallaxHeaderHeight={300}
-        //stickyHeaderHeight={0}
+        stickyHeaderHeight={HEADER_HEIGHT}
         renderStickyHeader={() => (
-          <View style={{ height: 60,  alignItems: 'center', backgroundColor: '#b0c4de', justifyContent: 'center' }}>
-            <Text>{this.state.title}</Text>
+          <View style={styles.stickyHeader}>
+            <Text style={{fontSize: 18, fontWeight: 'bold'}}>{this.state.title}</Text>
           </View>
         )}
         renderFixedHeader={() => (
-          <View style={{ height: 50, width: '100%', flex: 1, justifyContent: 'center', alignItems: 'flex-end', backgroundColor: 'transparant' }}>
-            <Image source={require('./assets/up.png')} style={{height: 40, width: 40, right: 20}} />
+          <View style={styles.fixedHeader}>
+            <TouchableOpacity onPress={this._onPressButton} style={{marginTop: 10}}>
+              <Image
+                style={{height: 40, width: 80}}
+                source={require('./assets/up.png')}
+                resizeMode='contain'
+              />
+            </TouchableOpacity>
           </View>
         )}
         renderForeground={() => (
-         <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Hello World!</Text>
+         <View style={styles.foreground}>
+            {/* <Image source={require('./assets/scenery-1.jpg')} style={{height: 350, width: '100%'}} /> */}
+            <ImageSwiper />
           </View>
         )}>
-        <View style={{ height: 500 }}>
-          <Text>Scroll me</Text>
+        <View style={{ height: 500, paddingTop: HEADER_HEIGHT, paddingHorizontal: 20 }}>
+          <Text style={{fontSize: 16}}>{this.state.title}</Text>
+          <Text style={{}}>Scroll me</Text>
         </View>
       </ParallaxScrollView>
     );
