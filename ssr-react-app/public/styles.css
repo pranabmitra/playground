@@ -1,0 +1,24 @@
+body {
+    background-color: #e9e9e9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 10px 30px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    font-size: 14px;
+    list-style-type: none;
+    height: 48px;
+    width: 100%;
+    color: #333;
+    border-bottom: 1px dashed rgba(0, 0, 0, 42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
