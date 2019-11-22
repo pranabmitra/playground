@@ -122,3 +122,22 @@ docker container run -rm -it pingtest
 ```
 
 
+Let's see a realistic example of Dockerfile.
+
+```sh
+# Build an image for a Node.js application; base image node:9.4
+FROM node:9.4
+# Create a /app folder in the filesystem of the image
+RUN mkdir -p /app
+# Set the working directory or context to the created /app folder
+WORKDIR /app
+# Copy a package.json file into the /app folder inside the image
+COPY package.json /app/
+# Install npm dependencies; since we're in the context and package.json is in the same directory
+RUN npm install
+# Copy all files from the current folder of the host into the /app folder of the image
+COPY . /app
+# Below two lines: Run the `npm start` command to start the Node application
+ENTRYPOINT ["npm"]
+CMD ["start"]
+```
