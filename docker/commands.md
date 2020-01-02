@@ -83,3 +83,20 @@ _docker volume create data_volume_
 New verbose way to mouting:
 _docker run --mount type=bind,source=/data/mysql,target=/var/lib/mysql mysql_
 
+__Registry__ - Deploy private registry
+_docker run -d -p 5000:5000 --name registry registry:2_ - This is from docker `registry` image. It allows us to push our image in private registry internally.
+
+```sh
+# Tag image with the local registry; registry_image_loc/image_name
+docker image tag my-image localhost:5000/my-image
+
+# Push the image to the local private registry
+docker push localhost:5000/my-image
+
+# Pull the image from the local private registry
+docker pull localhost:5000/my-image
+# Pull from the same network
+docker pull 192.168.56.12:5000/my-image
+```
+
+
