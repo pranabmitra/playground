@@ -64,13 +64,22 @@ Example: _docker run -e APP_COLOR=blue [image_name]_ - this will set the app col
 Note: To see all env vars of  a container, we need to inspect the container and check _Config->Env_
 
 __Network__ - 3 types of docker networks: bridge, none and host.
-> bridge - It is default network of a container. We can use different ports for the container application.
-> none - no particualr network assigned to the application. It doesn't have any access to any external networks or other contianers. They run in an isolated network.
-> host - container and docker host's port are same. Hence, it is not possible to use multiple instances of the application.
+* bridge - It is default network of a container. We can use different ports for the container application.
+* none - no particualr network assigned to the application. It doesn't have any access to any external networks or other contianers. They run in an isolated network.
+* host - container and docker host's port are same. Hence, it is not possible to use multiple instances of the application.
 
 Inspect particular network to get ip/subnet: _docker inspect [Container_name]_ - then go to `Netwoks` section.
 
 To create a custom network:
 _docker network create --driver bridge --subnet 182.18.0.0./16 custom-isolated-network_
 
+__Storage__ - `/var/lib/docker` directory of the docker host.
+There are two types of mounts:
+* Volume mounting (mounts from the `/var/lib/docker/volumes` directory) - _docker run -v data_volume:/var/lib/mysql mysql_
+Note: Docker will create the folder automatically, if we want we can create it also:
+_docker volume create data_volume_
+* Bind mounting (mounts a directory from any location on the docker host) - _docker run -v /data/mysql:/var/lib/mysql mysql_
+
+New verbose way to mouting:
+_docker run --mount type=bind,source=/data/mysql,target=/var/lib/mysql mysql_
 
