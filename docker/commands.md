@@ -58,3 +58,7 @@ Example: _docker inspect [Container_name]_ - to know more details of the contain
 
 __Logs__ - Container Logs
 Example: _docker logs [Container_name]_
+
+__ENV__ - Environment variable
+Example: _docker run -e APP_COLOR=blue [image_name]_ - this will set the app color (`blue`) to the environment variable.
+Note: To see all env vars of a container, we need to inspect the container and check _Config->Env_
