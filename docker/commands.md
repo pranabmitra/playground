@@ -61,4 +61,16 @@ Example: _docker logs [Container_name]_
 
 __ENV__ - Environment variable
 Example: _docker run -e APP_COLOR=blue [image_name]_ - this will set the app color (`blue`) to the environment variable.
-Note: To see all env vars of a container, we need to inspect the container and check _Config->Env_
+Note: To see all env vars of  a container, we need to inspect the container and check _Config->Env_
+
+__Network__ - 3 types of docker networks: bridge, none and host.
+> bridge - It is default network of a container. We can use different ports for the container application.
+> none - no particualr network assigned to the application. It doesn't have any access to any external networks or other contianers. They run in an isolated network.
+> host - container and docker host's port are same. Hence, it is not possible to use multiple instances of the application.
+
+Inspect particular network to get ip/subnet: _docker inspect [Container_name]_ - then go to `Netwoks` section.
+
+To create a custom network:
+_docker network create --driver bridge --subnet 182.18.0.0./16 custom-isolated-network_
+
+
