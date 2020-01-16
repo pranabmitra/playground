@@ -233,4 +233,18 @@ git push --force --tags origin 'refs/heads/*'
 git push origin [branch_name] --force
 ```
 
+## <a name="rename_branch"></a>Rename a local and remote branch
+
+```sh
+# rename local branch
+git branch -m new-branch
+
+# rename from a different branch
+git branch -m old-branch new-branch
+
+# delete the old remote branch and push the new local branch
+git push origin :old-branch new-branch
+
+# reset the upstream branch for the new local branch
+git push origin -u new-branch
 
