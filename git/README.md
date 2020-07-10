@@ -239,7 +239,7 @@ git push origin [branch_name] --force
 # rename local branch
 git branch -m new-branch
 
-# rename from different branch
+# rename from a different branch
 git branch -m old-branch new-branch
 
 # delete the old remote branch and push the new local branch
