@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  backend_nodejs:
+    build: ./backend
+    ports:
+      - "4008:4007"
+    networks: 
+      - mynetwork
+networks: 
+  mynetwork:
+    driver: bridge
+
