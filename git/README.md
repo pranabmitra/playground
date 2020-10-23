@@ -247,4 +247,16 @@ git push origin :old-branch new-branch
 
 # reset the upstream branch for the new local branch
 git push origin -u new-branch
+```
 
+## <a name="current_branch"></a>Get the current branch
+
+```sh
+# get the current branch
+git rev-parse --abbrev-ref HEAD
+
+# using node `child_process`
+import { execSync } from 'child_process';
+
+const currentBranch = execSync('git rev-parse--abbrev-ref HEAD').toString().replace('\n', '');
+```
