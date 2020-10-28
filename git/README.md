@@ -260,3 +260,13 @@ import { execSync } from 'child_process';
 
 const currentBranch = execSync('git rev-parse--abbrev-ref HEAD').toString().replace('\n', '');
 ```
+
+## <a name="remove_particular_commit"></a>Remove a particular commit
+
+```sh
+# remove a particular commit from a branch
+git revert --strategy resolve <commit>
+
+# e.g
+git revert --strategy resolve ff33dd1b133
+```
