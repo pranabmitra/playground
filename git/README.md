@@ -21,6 +21,7 @@ git config --global alias.cm commit
 git config --global alias.unstage "reset HEAD --"
 git config --global alias.last "log -1 HEAD"
 git config --global alias.lastfivelog "log --oneline -5"
+```
 
 ## <a name="create-branch"></a>Create a new branch
 
