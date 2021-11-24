@@ -41,7 +41,7 @@ git push -u origin <REMOTE_BRANCH>
 
 ## <a name="rebase-branch"></a>Rebase branch
 
-Let's say we're in a feature branch. We have to rebase the develop to get the latest changes.
+Let's say, we're in a feature branch. We have to rebase the develop to get the latest changes.
 
 ```sh
 # checkout the develop branch
@@ -63,7 +63,7 @@ git push -f
 
 ## <a name="merge-base"></a>Merge base
 
-Let's we made so many commits including some temp commit in our feature branch. However, we don't want to commit all those messages. Want to use some nice commit message instead.
+Let's say, we made so many commits including some temp commits in our feature branch. However, we don't want to commit all those messages. We want to use some nice commit messages instead.
 
 ```sh
 # Find out the common parts between the develop branch and feature branch
